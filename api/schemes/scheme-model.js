@@ -133,11 +133,11 @@ function findSteps(scheme_id) { // EXERCISE C
         }
       ]
   */
-  return db('steps as st')
-  .select('sc.*', 'step_id', 'step_number', 'instructions')
-  .join('steps as st', 'sc.scheme_id', 'st.scheme_id')
-  .where('sc.scheme_id', scheme_id)
-  .orderBy('sc.scheme_id', 'step_number');
+  return db('schemes as sc')
+    .select('sc.scheme_name', 'step_id', 'step_number', 'instructions')
+    .join('steps as st', 'sc.scheme_id', 'st.scheme_id')
+    .where('sc.scheme_id', scheme_id)
+    .orderBy('step_number');
   
 }
 
@@ -145,6 +145,7 @@ function add(scheme) { // EXERCISE D
   /*
     1D- This function creates a new scheme and resolves to _the newly created scheme_.
   */
+ 
 }
 
 function addStep(scheme_id, step) { // EXERCISE E
